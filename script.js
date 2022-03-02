@@ -67,10 +67,13 @@ function controlsFunction(operatorInput){
         }
     }
     if(operatorInput === 'neg'){
-        if(operand2 !== ""){
+        
+        if(operand2 !== "" && parseFloat(operand2) >0 ){
             operand2 =  '-' + operand2;
-        }else{
+        }else if(operand1 !== '' && parseFloat(operand1) > 0){
             operand1 = '-' + operand1 ;
+        }else if(operand1 === ''){
+            operand1 = '-';
         }
     }
 
@@ -82,8 +85,6 @@ function controlsFunction(operatorInput){
     
     if( operatorInput !== 'neg' && operatorInput !== 'dec' && operator===''){
         operator = operatorInput;
-    }else{
-        alert("Invalid Operation");
     }
     
     currentDisplay();
