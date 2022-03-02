@@ -4,13 +4,19 @@
     margin: auto;
     margin-top: 10vh;
     border: 1px solid black;
-    background-color: #EAEAEA;
+    /* background-color: #EAEAEA; */
     box-shadow: 0 8px gray;
     border-radius: 16px;
+
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2c3e50, #2980b9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 #display-box{
     height: 100px;;
     width: 100%;
+    font-size: x-large;
     background-color: white;
     border-bottom: 1px solid black;
     display: flex;
@@ -44,15 +50,18 @@
     align-items: center;
     font-size: 20px;
 }
-button{
+button {
     background-color: white;
     border: 1px solid black;
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    
 
 }
-
+button:hover{
+    background-color:skyblue;
+}
 .control-button{
     background-color: lightgray;
 }

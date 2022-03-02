@@ -14,6 +14,13 @@
             <span id="display"></span>
         </div>
         <div id="controls">
+            <div id="special opearator" class="digits">
+                <button class="control-button"  onclick="controlsFunction('^')">x<sup>y</sup></button>
+                <button class="control-button" onclick="controlsFunction3('CE')">CE</button>
+                <button class="control-button" onclick="controlsFunction3('C')">C</button>
+                <button class="control-button" onclick="controlsFunction3('')">&#x232B;</button>
+
+            </div>
             <div id="operators-1" class="digits">
                 <button class="control-button" onclick="controlsFunction2('fraction')">
                     1/x
@@ -72,13 +79,13 @@
                 </button>  
             </div>
             <div id="operator-down" class="digits">
-                <button class="digit-button" onclick="digitFunction2('neg')">
+                <button class="digit-button" onclick="controlsFunction('neg')">
                     +/-
                 </button>
                 <button class="digit-button" onclick="digitFunction('0')">
                     0
                 </button>
-                <button class="digit-button" onclick="digitFunction2('dec')">
+                <button class="digit-button" onclick="controlsFunction('dec')">
                     .
                 </button>
                 <button class="control-button" onclick="evaluateFunction()">
@@ -88,102 +95,9 @@
            
             
         </div>
-    </div>
-    <script>
-            let operand1 = "";
-            let operand2 = "";
-            let operator = "";
-            let operatortype ="";
-            function currentDisplay(typed){
-                 if(typed === "")
-                    document.getElementById("display").innerText = operand1 + operator + operand2 ;
-                 else{
-                     if(operatortype === "1/x")
-                        document.getElementById("display").innerText  = "(" + (1/operand1) + ") = ";
-                     if(operatortype === "^2"){
-                         document.getElementById("display").innerText = "(" +operand1  + "<sup>2</sup>" + ") = ";                     
-                         }
-                    if(operatortype === "sqrt"){
-                        document.getElementById("display".innerText = "sqrt(" + operand1 + ") = ");
-                    }
-
-                 }
-
-                
-            }
-
-            function digitFunction(num){
-                console.log("typed", num);
-                if(operand1 === "" || operator === ""){
-                    operand1 = operand1  + num;
-                    console.log("operand1", operand1);
-                    currentDisplay("");
-                    return;
-                }
-                operand2 = operand2 +num;
-                console.log("operand2", operand2);
-                currentDisplay("");
-            }
-            function controlsFunction(operatorInput){
-                operator = operatorInput;
-                currentDisplay("");
-                operatortype = "";
-            }
-
-            function controlsFunction2(operatorInput){
-                if(operatorInput === "fraction"){
-                    operatortype = '1/x' ;
-                }
-                if(operatorInput === "sqre"){
-                    operatortype = "^2";
-                }
-                if(operatorInput === "sqrt"){
-                    operatortype = "sqrt" ;
-                }
-                currentDisplay(operatortype);
-                evaluateFunction2();
-
-            }
-
-            function evaluateFunction2(){
-                if(operatortype !== "" && operand1 !== ""){
-                    let parseOperand1 = parseInt(operand1);
-                    let finalExpression;
-                    if(operatortype === "^2"){
-                        finalExpression = parseOperand1 * parseOperand1;
-                        
-                    }
-                    if(operatortype === "sqrt"){
-                        finalExpression = Math.sqrt(parseOperand1);
-                    }
-                    if(operatortype === "1/x"){
-                        finalExpression = 1 / parseOperand1;
-                    }
-                    document.getElementById("display").innerText = finalExpression;
-                    operand1 = "";
-                    operatortype = "";
-                    operand2 = "";
-                    operator = "";
-
-                }
-            }
-
-            function evaluateFunction(){
-                    if(operand1 !== "" && operand2 !== "" && operator !== ""){
-                        let parseOperand1 = parseInt(operand1);
-                        let parseOperand2 = parseInt(operand2);
-                        let finalExpression = eval(parseOperand1 + operator+ parseOperand2);
-                        document.getElementById("display").innerText = finalExpression;
-
-                        operand1 = "";
-                        operand2 = "";
-                        operator = "";
-                        console.log("final ans " , finalExpression);
-                        
-                    }
-            }
+    </div> 
+    <script src="script.js">
+        
     </script>
-    
-    <!-- <script src="script.js"></script> -->
 </body>
 </html>
